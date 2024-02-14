@@ -1,0 +1,10 @@
+<h1 mat-dialog-title class="cms-modal-title mb-3">{{data.title}}</h1>
+
+<div mat-dialog-content class="mb-3">
+    <div [innerHTML]="data.content"></div>
+</div>
+
+<div mat-dialog-actions class="justify-content-end">
+    <button class="btn btn-danger" [mat-dialog-close]="true">{{data.okText}}</button>
+    <button class="btn btn-outline-secondary ml-3" (click)="closeDialog()" cdkTrapFocus>{{data.closeText}}</button>
+</div>

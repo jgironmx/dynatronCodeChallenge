@@ -1,0 +1,50 @@
+<form *ngIf="model" #f="ngForm" (ngSubmit)="onSubmit(f)">
+	<div class="card mb-3 mt-3">
+		<div class="card-body">
+			<h3>
+				{{ action == ActionType.Create ? 'Add Customer' : '' }}
+				{{ action == ActionType.Edit ? 'Edit Customer' : '' }}
+			</h3>
+
+			<div class="bg-white">
+				<div class="form-group row mb-3">
+					<label for="firstName" class="col-lg-3 required">Customer Name</label>
+					<div class="col-lg-9">
+						<input #tstPropertyName="ngModel" type="text" class="form-control" [(ngModel)]="model.firstName"
+							name="firstName" [required]="true" />
+					</div>
+				</div>
+
+				<div class="form-group row mb-3">
+					<label for="lastName" class="col-lg-3">Customer Last Name</label>
+					<div class="col-lg-9">
+						<input type="text" class="form-control" [(ngModel)]="model.lastName" name="lastName" />
+					</div>
+				</div>
+
+				<div class="form-group row mb-3">
+					<label for="email" class="col-lg-3">Customer E-amil</label>
+					<div class="col-lg-9">
+						<input type="text" class="form-control" [(ngModel)]="model.email" name="email" />
+					</div>
+				</div>
+
+				<div *ngIf="errorMessage" class="text-danger" [innerHTML]="errorMessage"></div>
+
+				<div class="form-group row mb-3">
+					<div class="offset-3 col-lg-9">
+						<div class="action-button-group d-flex justify-content-between mb-3">
+							<button type="submit" class="btn tbn-md navbar-btn btn-primary " [disabled]="isLoading">
+								<i class="far fa-save"></i> Save
+							</button>
+							<button type="button" class="btn tbn-md navbar-btn btn-secondary " (click)="onCancel()"
+								[disabled]="isLoading">
+								<i class="far"></i> Cancel
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
