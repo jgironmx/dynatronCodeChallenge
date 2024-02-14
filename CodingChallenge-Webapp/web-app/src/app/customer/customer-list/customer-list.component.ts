@@ -88,7 +88,10 @@ export class CustomerListComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   editCustomer(customer: Customer){
-    localStorage.setItem('customerId', `${customer.id}` );
+    //local storage
+    //localStorage.setItem('customerId', `${customer.id}` );
+    //session storage
+    sessionStorage.setItem('customerId', `${customer.id}`);
     this.router.navigate(['customers', 'edit']);
   }
 
