@@ -1,3 +1,4 @@
+using DynaCodingChallenge.DbInitializer;
 using DynaCodingChallenge.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationContextConnection' not found.");
 
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
-
 
 // Add services to the container.
 builder.Services.AddCors(options =>
@@ -23,6 +23,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<DbInitializer>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +32,8 @@ if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
+
+	app.UseItToSeedSqlServer();
 }
 
 app.UseHttpsRedirection();
