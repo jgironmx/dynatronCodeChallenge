@@ -17,7 +17,7 @@ namespace DynaCodingChallenge.Controllers
 			var totalRecords = entities.Count();
 
 			var sortDescriptor = request.SortField;
-			if (!string.IsNullOrEmpty(sortDescriptor) && typeof(T1).GetProperty(sortDescriptor, System.Reflection.BindingFlags.IgnoreCase) != null)
+			if (!string.IsNullOrEmpty(sortDescriptor))
 			{
 				var orderBy = request.IsSortAscending ? $"{sortDescriptor}" : $"{sortDescriptor} desc";
 				entities = entities.OrderBy(orderBy);

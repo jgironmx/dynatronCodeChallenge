@@ -29,9 +29,10 @@ export class CustomerFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.action = this.route.snapshot.data['action'];
     if (this.action == CustomerAction.Edit) {
-      const id = this.route.snapshot.params['Id'];
+      //const id = this.route.snapshot.params['Id'];
+      const id = localStorage.getItem('customerId') as string;
       let customerSubs = this.customerService
-        .getById(id)
+        .getById(parseInt(id))
         .subscribe((a) => (this.model = a));
       this.customerSuscriptions.push(customerSubs);
     } else {

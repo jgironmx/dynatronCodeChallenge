@@ -48,7 +48,7 @@
                     <!-- Table Loop -->
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"
-                        [routerLink]="['/customers/edit', row.id]">
+                    (click)="editCustomer(row)">
                     </tr>
                 </table>
                 <mat-paginator [length]="dataSource.totalRecords$ | async" [pageSizeOptions]="[25, 50, 100]"

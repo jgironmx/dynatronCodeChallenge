@@ -17,7 +17,8 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'edit/:Id',
+    //path: 'edit/:Id',
+    path: 'edit',
     component: CustomerFormComponent,
     data: {
       action: CustomerAction.Edit,
